@@ -1,0 +1,36 @@
+n = 99383838383883888888884448888888888343443488888885588388383838883838999
+
+numero = n
+print("INPUT number:",numero)
+print()
+
+def get_digit(number, n):
+    return number // 10**(n-1) % 10
+
+def contraction (numero,digitos):
+    i=1
+    a = []
+    SUM = 0
+    while i <= digitos:
+        Num = get_digit (numero, i)
+        a.append(Num)
+        SUM = SUM + a[i-1]
+        i = i + 1
+    return SUM
+
+
+def digital_root(numero):
+    import math
+    digitos = int(math.log10(numero))+1
+    while digitos > 1:
+        print("amount of digits",digitos)
+        numero = contraction (numero,digitos)
+    
+        digitos = int(math.log10(numero))+1
+        print("new number :",numero,", new amount of digits :",digitos,sep='')
+        print('--')
+    return numero
+
+numero = digital_root(numero)
+print()
+print("OUTPUT: The number is",numero)
